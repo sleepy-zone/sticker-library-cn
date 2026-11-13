@@ -1,0 +1,29 @@
+{
+  "name": "贴纸 / 表情包灵感库",
+  "short_name": "贴纸灵感库",
+  "description": "23 套贴纸 / 表情包风格参考，原图与 Demo 并排展示。",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f7f7f4",
+  "theme_color": "#f54e00",
+  "icons": [
+    {
+      "src": "assets/app-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/app-icon-1024.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/app-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
