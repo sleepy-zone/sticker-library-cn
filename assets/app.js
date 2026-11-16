@@ -3,6 +3,7 @@
 
   var DATA = window.STICKER_SETS;
   var $ = function (s) { return document.querySelector(s); };
+  var cdnImage = window.cdnImage || function (p) { return p; };
   var grid = $("#grid");
   var empty = $("#empty");
   var modal = $("#modal");
@@ -71,7 +72,7 @@
     var load = i < 4 ? ' loading="eager" fetchpriority="' + (i === 0 ? "high" : "auto") + '"' : ' loading="lazy"';
     return '<div class="card" data-id="' + esc(s.id) + '" role="button" tabindex="0" aria-label="查看 ' + esc(s.title) + '">'
       + '<div class="card-media' + (isPack ? " is-pack" : "") + '">'
-      + '<img src="' + esc(cardPreview) + '" alt="' + esc(s.title) + ' 原始引用"' + load + ' decoding="async">'
+      + '<img src="' + esc(cdnImage(cardPreview)) + '" alt="' + esc(s.title) + ' 原始引用"' + load + ' decoding="async">'
       + '<span class="num">' + esc(s.id) + "</span>"
       + '<button class="fav' + (isFav ? " on" : "") + '" data-fav-id="' + esc(s.id) + '" aria-label="' + (isFav ? "取消收藏" : "收藏") + '" aria-pressed="' + (isFav ? "true" : "false") + '">'
       + '<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.3A3.7 3.7 0 0 1 12 8a3.7 3.7 0 0 1 7 2.7C19 15.6 12 20 12 20Z"/></svg>'
@@ -162,9 +163,9 @@
     $("#mnum").textContent = "NO. " + s.id;
     $("#mtitle").textContent = s.title;
     $("#msourcelink").href = s.url;
-    $("#mimg").src = s.source_preview || s.preview;
+    $("#mimg").src = cdnImage(s.source_preview || s.preview);
     $("#mimg").alt = s.title + " 原始引用";
-    $("#mdemo").src = s.preview;
+    $("#mdemo").src = cdnImage(s.preview);
     $("#mdemo").alt = s.title + " 生成 Demo";
 
     var list = state.visible.length ? state.visible : SETS.map(function (x) { return x.id; });
@@ -299,6 +300,11 @@
     if (id) openModal(id, false);
     else closeModal();
   });
+
+  var cdnImgs = document.querySelectorAll("[data-cdn-img]");
+  for (var ci = 0; ci < cdnImgs.length; ci++) {
+    cdnImgs[ci].src = cdnImage(cdnImgs[ci].getAttribute("data-cdn-img"));
+  }
 
   setTabState();
   render();
