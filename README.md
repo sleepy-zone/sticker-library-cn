@@ -8,6 +8,8 @@
 
 ![详情页](screenshots/detail.webp)
 
+![移动端详情](screenshots/detail-mobile.webp)
+
 ## 预置四个角色
 
 角色在 https://sleepyzone.online/ai-ref-library-cn/ 生成。
