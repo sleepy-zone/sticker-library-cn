@@ -14,6 +14,16 @@
 
 ![四个角色](screenshots/four-characters.webp)
 
+## 图片 CDN
+
+站点运行时通过 `data/mirror-snapshot.js` 把图片路径解析到 CDN：
+
+- 首页卡片、详情左栏使用原图 CDN
+- 详情右栏使用 Pack 预览 CDN
+- Demo 模特弹窗使用模特 CDN
+- 本地 `images/` 保留为离线兜底
+- 共 51 个 CDN 地址，换图只需改这一份映射
+
 ## 本地预览
 
 ```bash
