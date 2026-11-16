@@ -15,6 +15,18 @@
   var searchTimer = null;
   var lastFocus = null;
   var modelsLastFocus = null;
+  var searchTrackTimer = null;
+
+  function trackEvent(name, params) {
+    try { if (window.track) window.track(name, params); } catch (e) { }
+  }
+
+  function trackSearch() {
+    clearTimeout(searchTrackTimer);
+    searchTrackTimer = setTimeout(function () {
+      if (state.q) trackEvent("search", { lib: "sticker", q: state.q.slice(0, 40) });
+    }, 700);
+  }
 
   if (!DATA || !Array.isArray(DATA.sets)) {
     grid.innerHTML = '<div class="empty"><b>数据没有加载成功</b><span>请确认 data/sticker-sets.js 与 index.html 在同一目录下。</span></div>';
@@ -112,7 +124,9 @@
   }
 
   function toggleFav(id) {
-    if (favs.has(id)) favs.delete(id); else favs.add(id);
+    var addFav = !favs.has(id);
+    if (addFav) favs.add(id); else favs.delete(id);
+    trackEvent("fav", { lib: "sticker", id: id, action: addFav ? "add" : "remove" });
     saveFavs();
     render();
     if (state.current && state.current.id === id) syncFav();
@@ -141,6 +155,7 @@
 
   function openModels() {
     modelsLastFocus = document.activeElement;
+    trackEvent("models_open", { lib: "sticker", trigger: "toolbar" });
     modelsModal.hidden = false;
     document.body.classList.add("modal-open");
     setTimeout(function () { $("#modelsClose").focus(); }, 30);
@@ -159,6 +174,7 @@
     state.current = s;
     lastFocus = document.activeElement;
     document.title = s.title + " · 贴纸灵感库";
+    trackEvent("item_open", { lib: "sticker", id: s.id, label: s.title });
 
     $("#mnum").textContent = "NO. " + s.id;
     $("#mtitle").textContent = s.title;
@@ -242,11 +258,13 @@
     state.favOnly = false;
     state.q = "";
     qInput.value = "";
+    trackEvent("filter", { lib: "sticker", type: "all" });
     setTabState();
     render();
   };
   document.querySelector("[data-fav]").onclick = function () {
     state.favOnly = !state.favOnly;
+    trackEvent("filter", { lib: "sticker", type: "fav", value: state.favOnly ? "on" : "off" });
     setTabState();
     render();
   };
@@ -256,6 +274,7 @@
     searchTimer = setTimeout(function () {
       state.q = v;
       render();
+      trackSearch();
     }, 120);
   };
   qInput.onkeydown = function (e) {
@@ -268,6 +287,7 @@
   $("#random").onclick = function () {
     var list = filtered();
     if (!list.length) list = SETS;
+    trackEvent("random", { lib: "sticker" });
     openModal(list[Math.floor(Math.random() * list.length)].id, true);
   };
   $("#modelsBtn").onclick = openModels;
@@ -276,8 +296,15 @@
 
   $("#close").onclick = closeModal;
   modal.onclick = function (e) { if (e.target === modal) closeModal(); };
-  $("#prev").onclick = function () { step(-1); };
-  $("#next").onclick = function () { step(1); };
+  $("#prev").onclick = function () { trackEvent("step", { lib: "sticker", action: "prev" }); step(-1); };
+  $("#next").onclick = function () { trackEvent("step", { lib: "sticker", action: "next" }); step(1); };
+  $("#msourcelink").addEventListener("click", function () {
+    trackEvent("source_click", { lib: "sticker", id: state.current ? state.current.id : "", label: state.current ? state.current.title : "" });
+  });
+  var downloadCta = document.querySelector(".download-cta");
+  if (downloadCta) downloadCta.addEventListener("click", function () {
+    trackEvent("download_click", { lib: "sticker", label: "quark_netdisk", type: "23_sets_skills" });
+  });
 
   document.addEventListener("keydown", function (e) {
     var tag = (e.target.tagName || "").toLowerCase();
@@ -306,6 +333,7 @@
     cdnImgs[ci].src = cdnImage(cdnImgs[ci].getAttribute("data-cdn-img"));
   }
 
+  trackEvent("site_view", { lib: "sticker", type: "home", value: SETS.length });
   setTabState();
   render();
   var initial = hashId();

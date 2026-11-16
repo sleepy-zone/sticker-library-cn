@@ -32,6 +32,23 @@ https://pan.quark.cn/s/b80a94cc8fc1
 - 本地 `images/` 保留为离线兜底
 - 共 51 个 CDN 地址，换图只需改这一份映射
 
+## 埋点
+
+和 `char-db-cn` 共用同一个 Clarity 项目（`r1wmvdsf4a`），配置在 `data/analytics-config.js`。
+
+- 页面：`site_view`
+- 卡片：`item_open`
+- 搜索：`search`
+- 筛选：`filter`
+- 收藏：`fav`
+- 随机：`random`
+- 上一套/下一套：`step`
+- 来源点击：`source_click`
+- 网盘下载：`download_click`
+- Demo 模特：`models_open`
+
+本地调试：控制台执行 `window.__trackDebug = true` 后刷新，或查看 `window.__trackLog`（最近 200 条）。
+
 ## 本地预览
 
 ```bash
