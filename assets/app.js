@@ -79,11 +79,12 @@
     if (tags.length > 3) shown += '<span class="card-tag more">+' + (tags.length - 3) + "</span>";
     var isFav = favs.has(s.id);
     var isPack = !!s.pack;
-    var countLabel = isPack ? (s.pack.count || 12) + " 张" : s.sticker_count + " 个";
+    var countLabel = isPack ? (s.pack.count || 12) + " 张" : (s.source_only ? "仅来源" : s.sticker_count + " 个");
     var cardPreview = (isPack && s.source_preview) ? s.source_preview : s.preview;
+    var mediaClass = isPack ? " is-pack" : (s.source_only ? " is-source" : "");
     var load = i < 4 ? ' loading="eager" fetchpriority="' + (i === 0 ? "high" : "auto") + '"' : ' loading="lazy"';
     return '<div class="card" data-id="' + esc(s.id) + '" role="button" tabindex="0" aria-label="查看 ' + esc(s.title) + '">'
-      + '<div class="card-media' + (isPack ? " is-pack" : "") + '">'
+      + '<div class="card-media' + mediaClass + '">'
       + '<img src="' + esc(cdnImage(cardPreview)) + '" alt="' + esc(s.title) + ' 原始引用"' + load + ' decoding="async">'
       + '<span class="num">' + esc(s.id) + "</span>"
       + '<button class="fav' + (isFav ? " on" : "") + '" data-fav-id="' + esc(s.id) + '" aria-label="' + (isFav ? "取消收藏" : "收藏") + '" aria-pressed="' + (isFav ? "true" : "false") + '">'
@@ -181,8 +182,15 @@
     $("#msourcelink").href = s.url;
     $("#mimg").src = cdnImage(s.source_preview || s.preview);
     $("#mimg").alt = s.title + " 原始引用";
-    $("#mdemo").src = cdnImage(s.preview);
-    $("#mdemo").alt = s.title + " 生成 Demo";
+    var hasDemo = !!s.pack;
+    $("#mdemo").hidden = !hasDemo;
+    $("#mdemoempty").hidden = hasDemo;
+    if (hasDemo) {
+      $("#mdemo").src = cdnImage(s.preview);
+      $("#mdemo").alt = s.title + " 生成 Demo";
+    } else {
+      $("#mdemo").removeAttribute("src");
+    }
 
     var list = state.visible.length ? state.visible : SETS.map(function (x) { return x.id; });
     var idx = list.indexOf(s.id);

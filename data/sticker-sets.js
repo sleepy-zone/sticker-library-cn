@@ -1,6 +1,6 @@
 window.STICKER_SETS = {
   "generated_at": "2026-11-06",
-  "count": 23,
+  "count": 26,
   "sets": [
     {
       "id": "01",
@@ -968,6 +968,120 @@ window.STICKER_SETS = {
         "count": 9,
         "preview": "images/pack-previews/23-flat-gouache-pack.webp"
       }
+    },
+    {
+      "id": "24",
+      "index": 24,
+      "slug": "24-3d-animated",
+      "title": "3D 动画大头",
+      "creator": "Ziha（@Ziha_ai）",
+      "platform": "X (Twitter)",
+      "url": "https://x.com/Ziha_ai/status/2123005681200713762",
+      "preview": "images/24-3d-animated.webp",
+      "preview_count": 2,
+      "sticker_count": 0,
+      "animated": false,
+      "price": "免费（X 公开）",
+      "language": "无",
+      "tags": [
+        "3d",
+        "animated",
+        "big-head",
+        "glasses",
+        "googly-eyes",
+        "portrait"
+      ],
+      "direction": "3D 动画",
+      "style": "3D 动画角色大头：圆头、大眼镜、googly eyes、按钮鼻和惊讶小嘴；柔软 3D 渲染和街头穿搭。",
+      "why": "3D 动画的圆头、大眼镜和呆萌表情和 19 搪胶玩具、16 羊毛毡都不同；是一种新的“3D 动画角色”系统。",
+      "borrow": [
+        "先定圆头比例和大眼镜，再做 3D 柔光。",
+        "用小嘴和眼睛的位置控制呆萌感。",
+        "服装保留真实材质，和卡通头形成反差。"
+      ],
+      "prompt": "3D animated character portrait, original character, oversized round head, huge googly eyes, round glasses, button nose, tiny surprised mouth, soft 3D render, casual streetwear, 3:4",
+      "prompt_zh": "3D 动画角色大头肖像，原创角色，超大圆头、大 googly eyes、圆眼镜、按钮鼻、惊讶小嘴，柔和 3D 渲染，休闲街头穿搭，3:4",
+      "license": "X 上公开作品，授权不明；仅作风格参考，请勿再分发/商用。",
+      "license_type": "reference-only",
+      "redistributable": false,
+      "source_only": true,
+      "source_preview": "images/24-3d-animated.webp"
+    },
+    {
+      "id": "25",
+      "index": 25,
+      "slug": "25-deadpan-chibi",
+      "title": "死鱼眼 Q 版",
+      "creator": "Fector（@Fector_21）",
+      "platform": "X (Twitter)",
+      "url": "https://x.com/Fector_21/status/2121011728305549767",
+      "preview": "images/25-deadpan-chibi.webp",
+      "preview_count": 6,
+      "sticker_count": 0,
+      "animated": false,
+      "price": "免费（X 公开）",
+      "language": "无",
+      "tags": [
+        "deadpan",
+        "chibi",
+        "big-head",
+        "flat",
+        "reaction",
+        "no-text"
+      ],
+      "direction": "死鱼眼 Q 版",
+      "style": "死鱼眼 Q 版：大扁头、半睁眼、平涂粗线、无字；表情从无语到崩溃，梗图感很强。",
+      "why": "大扁头和半睁眼形成独立的表情系统；和 09 圆润 Q 版、10 大头、21 粗线梗图有部分重叠，但“死鱼眼”这个情绪更集中。",
+      "borrow": [
+        "头压扁、线放粗，眼睛只留半圆。",
+        "表情靠眼白和嘴角，不靠文字。",
+        "背景用简单高饱和色块。"
+      ],
+      "prompt": "Flat deadpan chibi sticker, original character, oversized flattened head, half-lidded eyes, thick clean outline, pastel flat colors, simple saturated background, no text, 1:1",
+      "prompt_zh": "扁平死鱼眼 Q 版贴纸，原创角色，超大扁头、半睁眼、干净的粗线，粉彩平涂，简单高饱和背景，无文字，1:1",
+      "license": "X 上公开作品，授权不明；仅作风格参考，请勿再分发/商用。",
+      "license_type": "reference-only",
+      "redistributable": false,
+      "source_only": true,
+      "source_preview": "images/25-deadpan-chibi.webp"
+    },
+    {
+      "id": "26",
+      "index": 26,
+      "slug": "26-pastel-doodle",
+      "title": "童趣粉彩",
+      "creator": "OscarAI（@Artedeingenio）",
+      "platform": "X (Twitter)",
+      "url": "https://x.com/Artedeingenio/status/2122290212990599413",
+      "preview": "images/26-pastel-doodle.webp",
+      "preview_count": 4,
+      "sticker_count": 0,
+      "animated": false,
+      "price": "免费（X 公开）",
+      "language": "无",
+      "tags": [
+        "pastel",
+        "doodle",
+        "childlike",
+        "texture",
+        "hand-drawn",
+        "warm"
+      ],
+      "direction": "童趣粉彩",
+      "style": "童趣粉彩：粉红/薄荷/奶油色、粗蜡笔线、纸张颗粒和不完美手绘边缘；像儿童画册。",
+      "why": "粉彩和纸张纹理很可爱，但和 04 杂涂、12 蜡笔、18 儿童蜡笔有明显重叠；适合作为童趣手绘的补充，不是急需。",
+      "borrow": [
+        "颜色只用粉、薄荷、奶油三组。",
+        "线要粗、要抖，允许涂出界。",
+        "保留纸张颗粒和没涂满的白。"
+      ],
+      "prompt": "Playful childlike pastel drawing, original character, thick wobbly crayon outlines, soft pink mint cream palette, visible paper grain, imperfect hand-drawn texture, 1:1",
+      "prompt_zh": "童趣粉彩手绘，原创角色，粗而抖的蜡笔轮廓，粉/薄荷/奶油配色，明显纸张颗粒，不完美的手绘边缘，1:1",
+      "license": "X 上公开作品，授权不明；仅作风格参考，请勿再分发/商用。",
+      "license_type": "reference-only",
+      "redistributable": false,
+      "source_only": true,
+      "source_preview": "images/26-pastel-doodle.webp"
     }
   ],
   "version": "v4"
