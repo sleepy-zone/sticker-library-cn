@@ -13,7 +13,7 @@
 <link rel="icon" type="image/png" sizes="1024x1024" href="assets/app-icon-1024.png">
 <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
-<link rel="stylesheet" href="assets/style.css?v=20261118">
+<link rel="stylesheet" href="assets/style.css?v=20261120">
 </head>
 <body>
 <header class="topbar">
@@ -26,10 +26,17 @@
     </a>
     <div class="topbar-right">
       <span class="top-note">26 套 · 23 套 Demo</span>
-      <a class="download-cta" href="https://pan.quark.cn/s/b80a94cc8fc1" target="_blank" rel="noopener" title="包含本站 23 套与 Skills，做同款表情包">
-        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v11"/><path d="m7 10 5 5 5-5"/><path d="M4 20h16"/></svg>
-        <span class="dl-copy"><b>网盘下载</b><i>23 套 + Skills · 做同款表情包</i></span>
-      </a>
+      <div class="download-wrap">
+        <button class="download-cta" id="downloadBtn" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="downloadMenu" title="包含本站 23 套与 Skills，做同款表情包">
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v11"/><path d="m7 10 5 5 5-5"/><path d="M4 20h16"/></svg>
+          <span class="dl-copy"><b>网盘下载</b><i>23 套 + Skills · 做同款表情包</i></span>
+          <span class="dl-caret" aria-hidden="true">▾</span>
+        </button>
+        <div class="download-menu" id="downloadMenu" role="menu" hidden>
+          <a role="menuitem" href="https://drive.uc.cn/s/ce2c23d9a2614" target="_blank" rel="noopener" data-download-provider="uc"><span>UC 网盘</span><b aria-hidden="true">↗</b></a>
+          <a role="menuitem" href="https://pan.xunlei.com/s/VP6tOlgsrhVYYrNkHDt_SpX1A1?pwd=n3ix" target="_blank" rel="noopener" data-download-provider="xunlei"><span>迅雷网盘</span><b aria-hidden="true">↗</b></a>
+        </div>
+      </div>
     </div>
   </div>
 </header>
@@ -145,10 +152,10 @@
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <noscript><div class="wrap"><p class="empty">这个页面需要 JavaScript 才能显示素材。</p></div></noscript>
 
-<script src="data/analytics-config.js?v=20261118"></script>
-<script src="assets/analytics.js?v=20261118"></script>
-<script src="data/mirror-snapshot.js?v=20261118"></script>
-<script src="data/sticker-sets.js?v=20261118"></script>
-<script src="assets/app.js?v=20261118"></script>
+<script src="data/analytics-config.js?v=20261120"></script>
+<script src="assets/analytics.js?v=20261120"></script>
+<script src="data/mirror-snapshot.js?v=20261120"></script>
+<script src="data/sticker-sets.js?v=20261120"></script>
+<script src="assets/app.js?v=20261120"></script>
 </body>
 </html>

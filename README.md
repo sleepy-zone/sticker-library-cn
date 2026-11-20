@@ -9,9 +9,10 @@ GitHub Pages：https://sleepy-zone.github.io/sticker-library-cn/
 
 ## 网盘下载
 
-右上角「网盘下载」包含本站 23 套表情包与 Skills，可做同款表情包：
+右上角「网盘下载」包含本站 23 套表情包与 Skills，可做同款表情包。提供两个网盘入口：
 
-https://pan.quark.cn/s/b80a94cc8fc1
+- UC 网盘：https://drive.uc.cn/s/ce2c23d9a2614
+- 迅雷网盘：https://pan.xunlei.com/s/VP6tOlgsrhVYYrNkHDt_SpX1A1?pwd=n3ix （提取码 `n3ix`）
 
 其中 23 套有 Demo；24–26（3D 动画大头、死鱼眼 Q 版、童趣粉彩）目前只收录来源参考，暂未生成 Demo。
 
@@ -50,7 +51,8 @@ https://pan.quark.cn/s/b80a94cc8fc1
 - 随机：`random`
 - 上一套/下一套：`step`
 - 来源点击：`source_click`
-- 网盘下载：`download_click`
+- 网盘菜单：`download_menu_open`
+- 网盘下载：`download_click`（带 provider）
 - Demo 模特：`models_open`
 
 本地调试：控制台执行 `window.__trackDebug = true` 后刷新，或查看 `window.__trackLog`（最近 200 条）。

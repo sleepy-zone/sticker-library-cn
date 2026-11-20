@@ -9,6 +9,9 @@
   var modal = $("#modal");
   var modelsModal = $("#modelsModal");
   var qInput = $("#q");
+  var downloadBtn = $("#downloadBtn");
+  var downloadMenu = $("#downloadMenu");
+  var downloadWrap = downloadBtn ? downloadBtn.parentElement : null;
   var favKey = "sticker-library-favs-v1";
   var baseTitle = document.title;
   var toastTimer = null;
@@ -309,12 +312,37 @@
   $("#msourcelink").addEventListener("click", function () {
     trackEvent("source_click", { lib: "sticker", id: state.current ? state.current.id : "", label: state.current ? state.current.title : "" });
   });
-  var downloadCta = document.querySelector(".download-cta");
-  if (downloadCta) downloadCta.addEventListener("click", function () {
-    trackEvent("download_click", { lib: "sticker", label: "quark_netdisk", type: "23_sets_skills" });
-  });
+  function closeDownloadMenu(focusBack) {
+    if (!downloadMenu || downloadMenu.hidden) return;
+    downloadMenu.hidden = true;
+    downloadBtn.setAttribute("aria-expanded", "false");
+    if (focusBack) downloadBtn.focus();
+  }
+
+  if (downloadBtn && downloadMenu) {
+    downloadBtn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      var open = downloadMenu.hidden;
+      downloadMenu.hidden = !open;
+      downloadBtn.setAttribute("aria-expanded", open ? "true" : "false");
+      if (open) trackEvent("download_menu_open", { lib: "sticker", type: "23_sets_skills" });
+    });
+    downloadMenu.querySelectorAll("a").forEach(function (a) {
+      a.addEventListener("click", function () {
+        trackEvent("download_click", { lib: "sticker", provider: a.getAttribute("data-download-provider"), type: "23_sets_skills" });
+      });
+    });
+    document.addEventListener("click", function (e) {
+      if (downloadWrap && !downloadWrap.contains(e.target)) closeDownloadMenu(false);
+    });
+  }
 
   document.addEventListener("keydown", function (e) {
+    if (downloadMenu && !downloadMenu.hidden && e.key === "Escape") {
+      e.preventDefault();
+      closeDownloadMenu(true);
+      return;
+    }
     var tag = (e.target.tagName || "").toLowerCase();
     var typing = tag === "input" || tag === "textarea" || tag === "select" || e.target.isContentEditable;
     if (!modelsModal.hidden) {
